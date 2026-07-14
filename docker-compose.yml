@@ -1,28 +1,22 @@
-services:
 
   redis:
-  image: redis:7-alpine
-  container_name: redis1
-  ports:
-    - "6379:6379"
-  command: ["redis-server","--appendonly","yes"]
-  volumes:
-    -redis-data:/data
-
+    image: redis:7-alpine
+    container_name: redis1
+    ports:
+      - "6379:6379"
+    command: ["redis-server","--appendonly","yes"]
+    volumes:
+      - redis-data:/data
 
   mongodb:
-   image: mongo:7
-   container_name: mongodb1
-   ports:
-   - "27017:27017"
-   volumes:
-   - mongo-data:/data/db
-  ports:
-   - "27017:27017"
-  enviroment:
-  MONGO_INTIT_DATABASE: mydatabase
-  volumes:
-  - mongo-data:/data/db
+    image: mongo:7
+    container_name: mongodb1
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: mydatabase
+    volumes:
+      - mongo-data:/data/db
 
   volumes:
   redis-data:
