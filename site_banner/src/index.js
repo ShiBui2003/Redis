@@ -12,3 +12,8 @@ app.post("/banner",async(req,res)=>{
         res.json({success: true});
 });
 
+app.get("/banner",async(req,res)=>{
+const message = await redis.get(BANNER_KEY);
+    res.json({banner: message});
+});
+
