@@ -18,3 +18,5 @@ app.post('/otp',async(req,res)=>{
     await redis.set(otpKey(phone), otp, 'EX',30);//otp valio for 30 secs
     res.json({message:'OTP SENT',otp});
 });
+
+app.
